@@ -16,4 +16,12 @@ class ClientShoppingController extends Controller
     public function news(){
         return view('frontend.news');
     }
+
+    public function productDetail(){
+        return view('frontend.product-detail');
+    }
+
+    public function search(){
+        return view('frontend.search');
+    }
 }

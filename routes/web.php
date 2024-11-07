@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\ClientShoppingController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +20,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[ClientShoppingController::class,'index'])->name('index');
 Route::get('/shop',[ClientShoppingController::class,'shops'])->name('shop');
 Route::get('/news',[ClientShoppingController::class,'news'])->name('news');
-
+Route::get('/product/{id}',[ClientShoppingController::class,'productDetail'])->name('product.detail');
+Route::get('/search',[ClientShoppingController::class,'search'])->name('product.search');
 // @backend route
+
+    //@admin dashboard page
+Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+
+    //@category
+Route::get('/admin/category',[CategoryController::class,'index'])->name('category.view');
+Route::get('/admin/category/add',[CategoryController::class,'addCategory'])->name('category.add');
+Route::post('/admin/category/submit-category',[CategoryController::class,'submitCategory'])->name('category.submit');
+
 

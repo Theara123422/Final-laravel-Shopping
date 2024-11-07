@@ -21,7 +21,7 @@
                                     <div class="status">
                                         Promotion
                                     </div>
-                                    <a href="">
+                                    <a href="{{route('product.detail',['id'=>1])}}">
                                         <img src="https://placehold.co/450x670" alt="">
                                     </a>
                                 </div>
@@ -286,6 +286,5 @@
                     </div>
                 </div>
             </section>
-
-        </main> 
+</main> 
 @endsection

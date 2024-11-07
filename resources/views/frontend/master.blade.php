@@ -31,10 +31,10 @@
                     </li>
                 </ul>
                 <div class="search">
-                    <form action="/search" method="get">
+                    <form action="{{route('product.search')}}" method="get">
                         <input type="text" name="s" class="box" placeholder="SEARCH HERE">
                         <button>
-                            <div style="background-image: url(uploads/search.png);
+                            <div style="background-image: url(/assets/image/icon-search.png);
                                         width: 28px;
                                         height: 28px;
                                         background-position: center;
