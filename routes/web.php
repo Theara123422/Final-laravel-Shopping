@@ -31,5 +31,8 @@ Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashb
 Route::get('/admin/category',[CategoryController::class,'index'])->name('category.view');
 Route::get('/admin/category/add',[CategoryController::class,'addCategory'])->name('category.add');
 Route::post('/admin/category/submit-category',[CategoryController::class,'submitCategory'])->name('category.submit');
+Route::get('/admin/category/edit/{id}',[CategoryController::class,'editCategory'])->name('category.edit');
+Route::post('/admin/category/submit-edit',[CategoryController::class,'submitEditCategory'])->name('category.submitEditCategory');
+
 
 

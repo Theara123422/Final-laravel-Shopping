@@ -251,7 +251,7 @@
               <!-- Search -->
               <div class="navbar-nav align-items-center">
                 <h4 class="page-main-title m-0 fw-bold">
-                  @yield('page-main-title')
+                  @yield('search')
                 </h4>
               </div>
               <!-- /Search -->
