@@ -35,7 +35,7 @@ View Category
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{route('category.edit',['id'=>$category->id])}}"><i
                                                 class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#basicModal"><i class="bx bx-trash me-1"></i>
+                                        <a class="dropdown-item" href="javascript:void(0);" data-value="{{$category -> id}}" data-bs-toggle="modal" data-bs-target="#basicModal" id="remove-post-key"><i class="bx bx-trash me-1"></i>
                                             Delete
                                         </a>
                                     </div>
@@ -61,10 +61,14 @@ View Category
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                    Close
-                                </button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <form action="{{route('submitDeleteCategory')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" id="remove-val" name="remove_id">
+                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </form>
                             </div>
                         </div>
                     </div>

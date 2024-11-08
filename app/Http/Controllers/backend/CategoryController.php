@@ -44,4 +44,13 @@ class CategoryController extends Controller
             return redirect()->route('category.view');
         }
     }
+    public function submitDeleteCategory(Request $request){
+        $id = $request -> input('remove_id');
+
+        $result = DB::table('category')
+                    ->where('id',$id)
+                    ->delete();
+        return $result;
+        
+    }
 }

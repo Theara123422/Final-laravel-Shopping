@@ -33,6 +33,7 @@ Route::get('/admin/category/add',[CategoryController::class,'addCategory'])->nam
 Route::post('/admin/category/submit-category',[CategoryController::class,'submitCategory'])->name('category.submit');
 Route::get('/admin/category/edit/{id}',[CategoryController::class,'editCategory'])->name('category.edit');
 Route::post('/admin/category/submit-edit',[CategoryController::class,'submitEditCategory'])->name('category.submitEditCategory');
+Route::post('/admin/category/submit-delete',[CategoryController::class,'submitDeleteCategory'])->name('submitDeleteCategory');
 
 
 
