@@ -1,7 +1,7 @@
 <?php
 
-
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\AuthController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\ClientShoppingController;
 use Illuminate\Support\Facades\Route;
@@ -23,9 +23,11 @@ Route::get('/news',[ClientShoppingController::class,'news'])->name('news');
 Route::get('/product/{id}',[ClientShoppingController::class,'productDetail'])->name('product.detail');
 Route::get('/search',[ClientShoppingController::class,'search'])->name('product.search');
 // @backend route
+    // @user login & register 
+Route::get('/login',[AuthController::class,'login'])->name('login');
 
     //@admin dashboard page
-Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+// Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
 
     //@category
 Route::get('/admin/category',[CategoryController::class,'index'])->name('category.view');
@@ -33,7 +35,8 @@ Route::get('/admin/category/add',[CategoryController::class,'addCategory'])->nam
 Route::post('/admin/category/submit-category',[CategoryController::class,'submitCategory'])->name('category.submit');
 Route::get('/admin/category/edit/{id}',[CategoryController::class,'editCategory'])->name('category.edit');
 Route::post('/admin/category/submit-edit',[CategoryController::class,'submitEditCategory'])->name('category.submitEditCategory');
-Route::post('/admin/category/submit-delete',[CategoryController::class,'submitDeleteCategory'])->name('submitDeleteCategory');
+Route::get('/admin/category/remove/{id}',[CategoryController::class,'removeCategory'])->name('category.remove');
+Route::post('/admin/category/submit-delete',[CategoryController::class,'submitDeleteCategory'])->name('category.submitDeleteCategory');
 
 
 
