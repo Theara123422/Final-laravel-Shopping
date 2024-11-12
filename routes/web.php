@@ -24,19 +24,25 @@ Route::get('/product/{id}',[ClientShoppingController::class,'productDetail'])->n
 Route::get('/search',[ClientShoppingController::class,'search'])->name('product.search');
 // @backend route
     // @user login & register 
+Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::post('/submit-register',[AuthController::class,'submitRegister'])->name('submitRegister');
+Route::post('/submit-login',[AuthController::class,'submitLogin'])->name('submitLogin');
 
-    //@admin dashboard page
-// Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
 
-    //@category
-Route::get('/admin/category',[CategoryController::class,'index'])->name('category.view');
-Route::get('/admin/category/add',[CategoryController::class,'addCategory'])->name('category.add');
-Route::post('/admin/category/submit-category',[CategoryController::class,'submitCategory'])->name('category.submit');
-Route::get('/admin/category/edit/{id}',[CategoryController::class,'editCategory'])->name('category.edit');
-Route::post('/admin/category/submit-edit',[CategoryController::class,'submitEditCategory'])->name('category.submitEditCategory');
-Route::get('/admin/category/remove/{id}',[CategoryController::class,'removeCategory'])->name('category.remove');
-Route::post('/admin/category/submit-delete',[CategoryController::class,'submitDeleteCategory'])->name('category.submitDeleteCategory');
+
+Route::middleware(['auth'])->group(function () {
+        //@admin dashboard page
+    Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('dashboard');
+        //@category
+    Route::get('/admin/category',[CategoryController::class,'index'])->name('category.view');
+    Route::get('/admin/category/add',[CategoryController::class,'addCategory'])->name('category.add');
+    Route::post('/admin/category/submit-category',[CategoryController::class,'submitCategory'])->name('category.submit');
+    Route::get('/admin/category/edit/{id}',[CategoryController::class,'editCategory'])->name('category.edit');
+    Route::post('/admin/category/submit-edit',[CategoryController::class,'submitEditCategory'])->name('category.submitEditCategory');
+    Route::get('/admin/category/remove/{id}',[CategoryController::class,'removeCategory'])->name('category.remove');
+    Route::post('/admin/category/submit-delete',[CategoryController::class,'submitDeleteCategory'])->name('category.submitDeleteCategory');
+});
 
 
 

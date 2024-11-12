@@ -16,7 +16,7 @@
                 <p class="text-danger text-center">{{ Session::get('message') }}</p>
             @endif
 
-            <form id="formAuthentication" class="mb-3" action="/signin-submit" method="POST">
+            <form id="formAuthentication" class="mb-3" action="{{route('submitLogin')}}" method="POST">
               @csrf
               <div class="mb-3">
                 <label for="email" class="form-label">Email or Username</label>
@@ -63,7 +63,7 @@
 
             <p class="text-center">
               <span>New on our platform?</span>
-              <a href="/signup">
+              <a href="{{route('register')}}">
                 <span>Create an account</span>
               </a>
             </p>
