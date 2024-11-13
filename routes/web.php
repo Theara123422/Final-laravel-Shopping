@@ -28,8 +28,8 @@ Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::post('/submit-register',[AuthController::class,'submitRegister'])->name('submitRegister');
 Route::post('/submit-login',[AuthController::class,'submitLogin'])->name('submitLogin');
-
-
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+Route::post('/submit-logout',[AuthController::class,'submitLogout'])->name('submitLogout');
 
 Route::middleware(['auth'])->group(function () {
         //@admin dashboard page

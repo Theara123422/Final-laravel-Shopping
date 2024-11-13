@@ -45,11 +45,25 @@ class AuthController extends Controller
         if(Auth::attempt(['name'=>$email_username,'password'=>$password])){
             return redirect()->route('dashboard');
         }
-        if(Auth::attempt(['email'=>$email_username,'password'=>$password])){
+        elseif(Auth::attempt(['email'=>$email_username,'password'=>$password])){
             return redirect()->route('dashboard');
         }
         else{
             return back()->withErrors(['message'=>'failed to login'])->onlyInput('email');
         }
+    }
+    public function logout(){
+        return view('backend.auth.logout');
+    }
+    public function submitLogout(Request $request){
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+
     }
 }
