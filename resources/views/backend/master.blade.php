@@ -157,13 +157,13 @@
 
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="/admin/list-product" class="menu-link">
-                    <div data-i18n="Without menu">View Post</div>
+                  <a href="/admin/product" class="menu-link">
+                    <div data-i18n="Without menu">View Product</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="/admin/add-product" class="menu-link">
-                    <div data-i18n="Without menu">Add Post</div>
+                  <a href="/admin/product/add" class="menu-link">
+                    <div data-i18n="Without menu">Add Product</div>
                   </a>
                 </li>
               </ul>

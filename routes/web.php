@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\AdminController;
+use App\Http\Controllers\backend\AdminProductController;
 use App\Http\Controllers\backend\AuthController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\ClientShoppingController;
@@ -42,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/admin/category/submit-edit',[CategoryController::class,'submitEditCategory'])->name('category.submitEditCategory');
     Route::get('/admin/category/remove/{id}',[CategoryController::class,'removeCategory'])->name('category.remove');
     Route::post('/admin/category/submit-delete',[CategoryController::class,'submitDeleteCategory'])->name('category.submitDeleteCategory');
+        //@product
+    Route::get('/admin/product',[AdminProductController::class,'index']);
+    Route::get('/admin/product/add',[AdminProductController::class,'addProduct']);
 });
 
 
