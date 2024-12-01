@@ -9,14 +9,13 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="col-xl-12">
                 <!-- File input -->
-                <form action="/admin/add-product-submit" method="post" enctype="multipart/form-data">
+                <form action="/admin/product/submit-product" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
-                       
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="mb-3 col-6">
+                                    <input type="hidden" value="{{Auth::User() -> id}}" name="id">
                                     <label for="formFile" class="form-label">Name</label>
                                     <input class="form-control" type="text" name="name" />
                                 </div>
@@ -54,6 +53,7 @@
                                 <div class="mb-3 col-6">
                                     <label for="formFile" class="form-label">Category</label>
                                     <select name="category" class="form-control" >
+                                            <option value=""></option>
                                         @foreach ($row as $categoryVal)
                                             <option value="{{$categoryVal -> id}}">{{$categoryVal -> name}}</option>
                                         @endforeach
@@ -64,13 +64,13 @@
                                     <input class="form-control" type="file" name="thumbnail" />
                                 </div>
                                 <div class="mb-3 col-12">
-                                    <label for="formFile" class="form-label text-danger">Description</label>
+                                    <label for="formFile" class="form-label">Description</label>
                                     <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <input type="submit" class="btn btn-primary" value="Add Product">
-                                <a href="/admin/product"></a>
+                                <a href="/admin/product" class="btn btn-danger">Cancel</a>
                             </div>
                         </div>
                     </div>

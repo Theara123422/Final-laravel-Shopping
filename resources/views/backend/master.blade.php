@@ -270,7 +270,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../assets/image/{{Auth::User()->profile}}" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="../assets/image/{{Auth::User()->profile}}" class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">

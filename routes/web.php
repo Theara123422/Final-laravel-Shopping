@@ -46,6 +46,7 @@ Route::middleware(['auth'])->group(function () {
         //@product
     Route::get('/admin/product',[AdminProductController::class,'index']);
     Route::get('/admin/product/add',[AdminProductController::class,'addProduct']);
+    Route::post('/admin/product/submit-product',[AdminProductController::class,'submitAddProduct']);
 });
 
 

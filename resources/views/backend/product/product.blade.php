@@ -25,38 +25,40 @@
                 </tr>
               </thead>
               <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td>
-                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <img src="https://placehold.co/40" alt="Avatar" class="rounded-circle" 
-                                style="width: 50px;
-                                object-fit: cover;
-                                border-radius: 0px !important;
-                            ">
-                            </ul>
-                        </td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Name</strong></td>
-                        <td>10</td>
-                        <td>0.5</td>
-                        <td>1</td>
-                        <td><span class="badge bg-label-success me-1">Shoes</span></td>
-                        <td><span class="badge bg-label-primary me-1">Blue</span></td>
-                        <td><span class="badge bg-label-primary me-1">XL</span></td>
-                        <td>10</td>
-                        <td><span class="badge bg-label-warning me-1">Sok</span></td>
-                    
-                        <td>
-                            <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="update-product/"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                <a class="dropdown-item" id="remove-post-key" data-value="1" data-bs-toggle="modal" data-bs-target="#basicModal" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
-                            </div>
-                            </div>
-                        </td>
-                    </tr>
+                    @foreach ($products as $product)
+                      <tr>
+                          <td>
+                              <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                              <img src="../assets/image/{{$product -> thumbnail}}" alt="Avatar" class="rounded-circle" 
+                                  style="width: 50px;
+                                  object-fit: cover;
+                                  border-radius: 0px !important;
+                              ">
+                              </ul>
+                          </td>
+                          <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$product->name}}</strong></td>
+                          <td>{{$product->qty }}</td>
+                          <td>{{$product->regular_price}}</td>
+                          <td>{{$product->sale_price}}</td>
+                          <td><span class="badge bg-label-success me-1">{{$product->cat_name}}</span></td>
+                          <td><span class="badge bg-label-primary me-1">{{$product->color}}</span></td>
+                          <td><span class="badge bg-label-primary me-1">{{$product->size}}</span></td>
+                          <td>{{$product->views}}</td>
+                          <td><span class="badge bg-label-warning me-1">{{$product->user_name}}</span></td>
+                      
+                          <td>
+                              <div class="dropdown">
+                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                  <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="update-product/"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                  <a class="dropdown-item" id="remove-post-key" data-value="1" data-bs-toggle="modal" data-bs-target="#basicModal" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                              </div>
+                              </div>
+                          </td>
+                      </tr>
+                    @endforeach
                
               </tbody>
             </table>
