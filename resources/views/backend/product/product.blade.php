@@ -52,8 +52,8 @@
                                   <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="update-product/"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                  <a class="dropdown-item" id="remove-post-key" data-value="1" data-bs-toggle="modal" data-bs-target="#basicModal" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
+                                  <a class="dropdown-item" href="/admin/product/edit/{{$product->id}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                  <a class="dropdown-item remove-post-key"  data-value="{{$product -> id}}" data-bs-toggle="modal" data-bs-target="#basicModal" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                               </div>
                               </div>
                           </td>
@@ -66,7 +66,8 @@
         </div>
 
         <div class="mt-3">
-          <form action="" method="post">
+          <form action="/admin/product/delete" method="post">
+            @csrf
           <div class="modal fade" id="basicModal" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">

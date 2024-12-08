@@ -47,6 +47,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product',[AdminProductController::class,'index']);
     Route::get('/admin/product/add',[AdminProductController::class,'addProduct']);
     Route::post('/admin/product/submit-product',[AdminProductController::class,'submitAddProduct']);
+    Route::get('/admin/product/edit/{id}',[AdminProductController::class,'editProduct']);
+    Route::post('/admin/product/submit-edit',[AdminProductController::class,'submitEditProduct']);
+    Route::post('/admin/product/delete',[AdminProductController::class,'submitRemoveProduct']);
 });
 
 

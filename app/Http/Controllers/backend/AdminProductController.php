@@ -56,4 +56,62 @@ class AdminProductController extends Controller
             return redirect('/admin/product');
         }
     }
+    public function editProduct($id){
+        $products = DB::table('product')
+                  ->join('category','product.category_id','=','category.id')
+                  ->select('product.*','category.id AS cat_id','category.name AS cat_name')
+                  ->where('product.id',$id)
+                  ->get();
+        $category = DB::table('category')
+                  ->get();
+        return view('backend.product.edit_product',['products'=>$products,'category'=>$category]);
+    }
+    public function submitEditProduct(Request $request){
+        $id            = $request -> input('edited_id');
+        $name          =  $request -> input('edited_name');
+        $qty           =  $request -> input('edited_qty');
+        $regular_price =  $request -> input('edited_regular_price');
+        $sale_price    =  $request -> input('edited_sale_price');
+        $size          =  implode(',',$request -> input('edited_size'));
+        $color         =  implode(',',$request -> input('edited_color'));
+        $description   =  $request -> input('edited_description');
+        $category_id   =  $request -> input('edited_category');  
+        $thumbnail     =  $request -> file('edited_thumbnail'); 
+        if(empty($thumbnail)){
+            $img = $request -> input('updated_image');
+        }
+        else{
+            $image = $thumbnail;
+            $path   = './assets/image';
+            $img   = time() .'-'. $image -> getClientOriginalName();
+            $image->move($path,$img);
+        }
+
+        $result = DB::table('product')
+                    ->where('id',$id)
+                    ->update([
+                        'name' => $name,
+                        'regular_price' => $regular_price,
+                        'sale_price' => $sale_price,
+                        'qty' => $qty,
+                        'thumbnail' => $img,
+                        'color' => $color,
+                        'size'  => $size,
+                        'description' => $description,
+                        'category_id' => $category_id,
+                    ]);
+        if($result){
+            return redirect('/admin/product');
+        }  
+        return $request;
+    }
+    public function submitRemoveProduct(Request $request){
+        $id = $request -> input('remove-id');
+        $result = DB::table('product')->where('id',$id)->delete();
+
+        if($result){
+            return redirect('/admin/product');
+        }
+       
+    }
 }
