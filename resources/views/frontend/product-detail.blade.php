@@ -11,41 +11,37 @@
             <div class="row">
                 <div class="col-5">
                     <div class="thumbnail">
-                        <img src="https://placehold.co/450x670" alt="">
+                        <img width="450" src="../assets/image/{{$row[0]->thumbnail}}" alt="">
                     </div>
                 </div>
                 <div class="col-7">
                     <div class="detail">
                         <div class="price-list">
-                            <div class="price d-none">US 30.5</div>
-                            <div class="regular-price"><strike> US 30.5</strike></div>
-                            <div class="sale-price">US 23.6</div>
+                            @if($row[0] -> sale_price < $row[0] -> regular_price)
+                                <div class="regular-price "><strike> US {{$row[0] -> regular_price}}</strike></div>
+                                <div class="sale-price ">US {{$row[0] -> sale_price}}</div>
+                            @else
+                                <div class="regular-price "> US {{$row[0] -> regular_price}}</div>
+                                <div class="sale-price d-none">US {{$row[0] -> sale_price}}</div>
+                            @endif
                         </div>
-                        <h5 class="title">Plain T-shirt</h5>
+                        <h5 class="title">{{$row[0]->name}}</h5>
                         <div class="group-size">
                             <span class="title">Color Available</span>
                             <div class="group">
-                                Red ,Yellow ,Green
+                                {{$row[0] -> color}}
                             </div>
                         </div>
                         <div class="group-size">
                             <span class="title">Size Available</span>
                             <div class="group">
-                                XS ,S ,M ,L ,XL ,XXL
+                                {{$row[0] -> size}}
                             </div>
                         </div>
                         <div class="group-size">
                             <span class="title">Description</span>
                             <div class="description">
-                                There are many variations of passages of Lorem Ipsum available, but the majority have
-                                suffered alteration in some form, by injected humour, or randomised words which don't
-                                look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                                need to be sure there isn't anything embarrassing hidden in the middle of text. All the
-                                Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary,
-                                making this the first true generator on the Internet. It uses a dictionary of over 200
-                                Latin words, combined with a handful of model sentence structures, to generate Lorem
-                                Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from
-                                repetition, injected humour, or non-characteristic words etc.
+                                {{$row[0] -> description}}
                             </div>
                         </div>
                     </div>
@@ -64,86 +60,35 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <figure>
-                        <div class="thumbnail">
-                            <div class="status">
-                                Promotion
+               @foreach ($relatedProduct as $relatedProductItem)
+                    <div class="col-3">
+                        <figure>
+                            <div class="thumbnail">
+                                @if($relatedProductItem-> sale_price < $relatedProductItem-> regular_price)
+                                    <div class="status">Promotion</div>
+                                @else
+                                    
+                                @endif
+                                <a href="{{route('product.detail',$relatedProductItem->id)}}">
+                                    <img src="../assets/image/{{$relatedProductItem -> thumbnail}}" alt="">
+                                </a>
                             </div>
-                            <a href="">
-                                <img src="https://placehold.co/450x670" alt="">
-                            </a>
-                        </div>
-                        <div class="detail">
-                            <div class="price-list">
-                                <div class="price d-none">US 10</div>
-                                <div class="regular-price "><strike> US 15</strike></div>
-                                <div class="sale-price ">US 12</div>
+                            <div class="detail">
+                                <div class="price-list">
+                                    @if($relatedProductItem-> sale_price < $relatedProductItem-> regular_price)
+                                        <div class="regular-price "><strike> US {{$relatedProductItem-> regular_price}}</strike></div>
+                                        <div class="sale-price ">US {{$relatedProductItem-> sale_price}}</div>
+                                    @else
+                                        <div class="regular-price "> US {{$relatedProductItem-> regular_price}}</div>
+                                        <div class="sale-price d-none">US {{$relatedProductItem-> sale_price}}</div>
+                                    @endif
+                                </div>
+                                <h5 class="title">{{$relatedProductItem -> name}}</h5>
                             </div>
-                            <h5 class="title">T-Shirt 001</h5>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-3">
-                    <figure>
-                        <div class="thumbnail">
-                            <div class="status">
-                                Promotion
-                            </div>
-                            <a href="">
-                                <img src="https://placehold.co/450x670" alt="">
-                            </a>
-                        </div>
-                        <div class="detail">
-                            <div class="price-list">
-                                <div class="price d-none">US 10</div>
-                                <div class="regular-price "><strike> US 15</strike></div>
-                                <div class="sale-price ">US 12</div>
-                            </div>
-                            <h5 class="title">T-Shirt 001</h5>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-3">
-                    <figure>
-                        <div class="thumbnail">
-                            <div class="status">
-                                Promotion
-                            </div>
-                            <a href="">
-                                <img src="https://placehold.co/450x670" alt="">
-                            </a>
-                        </div>
-                        <div class="detail">
-                            <div class="price-list">
-                                <div class="price d-none">US 10</div>
-                                <div class="regular-price "><strike> US 15</strike></div>
-                                <div class="sale-price ">US 12</div>
-                            </div>
-                            <h5 class="title">T-Shirt 001</h5>
-                        </div>
-                    </figure>
-                </div>
-                <div class="col-3">
-                    <figure>
-                        <div class="thumbnail">
-                            <div class="status">
-                                Promotion
-                            </div>
-                            <a href="">
-                                <img src="https://placehold.co/450x670" alt="">
-                            </a>
-                        </div>
-                        <div class="detail">
-                            <div class="price-list">
-                                <div class="price d-none">US 10</div>
-                                <div class="regular-price "><strike> US 15</strike></div>
-                                <div class="sale-price ">US 12</div>
-                            </div>
-                            <h5 class="title">T-Shirt 001</h5>
-                        </div>
-                    </figure>
-                </div>
+                        </figure>
+                    </div>
+               @endforeach
+                
             </div>
         </div>
     </section>

@@ -23,6 +23,7 @@ Route::get('/shop',[ClientShoppingController::class,'shops'])->name('shop');
 Route::get('/news',[ClientShoppingController::class,'news'])->name('news');
 Route::get('/product/{id}',[ClientShoppingController::class,'productDetail'])->name('product.detail');
 Route::get('/search',[ClientShoppingController::class,'search'])->name('product.search');
+Route::get('/article',[ClientShoppingController::class,'article'])->name('product.article');
 // @backend route
     // @user login & register 
 Route::get('/register',[AuthController::class,'register'])->name('register');

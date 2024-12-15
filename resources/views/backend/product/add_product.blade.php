@@ -28,7 +28,7 @@
                                     <input class="form-control" type="number" name="regular_price" />
                                 </div>
                                 <div class="mb-3 col-6">
-                                    <label for="formFile" class="form-label">Sale Price</label>
+                                    <label for="formFile" class="form-label">Sale Price (Optional)</label>
                                     <input class="form-control" type="number" name="sale_price" />
                                 </div>
                                 <div class="mb-3 col-6">

@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="mb-3 col-6">
-                                    <input type="hidden" value="{{Auth::User() -> id}}" name="edited_id">
+                                    <input type="hidden" value="{{$products[0] -> id}}" name="edited_id">
                                     <label for="formFile" class="form-label">Name</label>
                                     <input class="form-control" type="text" name="edited_name" value="{{$products[0]->name}}"/>
                                 </div>
