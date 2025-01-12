@@ -19,6 +19,7 @@ Route::post('/product/submit-product' , [ProductController::class,'submitProduct
 Route::get('/detail/{id}' , [ProductController::class,'detailProduct']);
 
 Route::get('/update/{id}' , [ProductController::class,'updateProduct']);
+Route::post('/product/submit-update', [ProductController::class,'submitEditProduct']);
 
 
 

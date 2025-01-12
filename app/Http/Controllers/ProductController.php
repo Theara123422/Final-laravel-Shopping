@@ -49,4 +49,19 @@ class ProductController extends Controller
                           ->get();
         return view('Product.update',['data'=>$updatedProduct]);
     }
+
+    public function submitEditProduct(Request $request){
+        $result = DB::table('product')
+                    ->where('id',$request -> updated_id)
+                    ->update([
+                        'name' => $request -> updated_name,
+                        'qty'  => $request -> updated_qty,
+                        'price'=> $request->  updated_price,
+                        'remark' => $request -> updated_remark,
+                        'total' => $request -> updated_qty * $request -> updated_price
+                    ]);    
+        if($result){
+            return redirect('/');
+        }  
+    }
 }
