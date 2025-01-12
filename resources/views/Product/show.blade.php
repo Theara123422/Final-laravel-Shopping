@@ -28,7 +28,7 @@
                 <td>{{$data -> remark}}</td>
                 <td>
                     <a href="/update/{{$data -> id}}">Update</a>
-                    <a href="">Remove</a>
+                    <a href="/delete/{{$data -> id}}">Remove</a>
                     <a href="/detail/{{$data -> id}}">Detail</a>
                 </td>
             </tr>

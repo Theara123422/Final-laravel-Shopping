@@ -64,4 +64,17 @@ class ProductController extends Controller
             return redirect('/');
         }  
     }
+
+    public function removeProduct($id){
+        return view('Product.remove',['id' => $id]);
+    }
+
+    public function submitDeleteProduct(Request $request){
+        $result   =  DB::table('product')
+                     ->where('id',$request -> del_id)
+                     ->delete();
+        if($result){
+            return redirect('/');
+        }
+    }
 }

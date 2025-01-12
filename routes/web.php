@@ -21,5 +21,8 @@ Route::get('/detail/{id}' , [ProductController::class,'detailProduct']);
 Route::get('/update/{id}' , [ProductController::class,'updateProduct']);
 Route::post('/product/submit-update', [ProductController::class,'submitEditProduct']);
 
+Route::get('/delete/{id}' , [ProductController::class,'removeProduct']);
+Route::post('/product/submit-delete' , [ProductController::class,'submitDeleteProduct']);
+
 
 
