@@ -18,7 +18,9 @@ return new class extends Migration
             $table->float('price');
             $table->float('total');
             $table->string('remark');
-            $table->timestamps();
+            $table->string('image');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

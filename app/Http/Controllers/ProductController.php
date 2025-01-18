@@ -21,14 +21,20 @@ class ProductController extends Controller
     }
 
     public function submitProduct(Request $request){
-        //query builder
+
+        $file = $request->file('p_image');
+        $path = './image/';
+        $filename = time() .'-'. $file->getClientOriginalName();
+        $file->move($path,$filename);
+        // query builder
         $result = DB::table('product')->insert(
             [
                 'name' => $request -> p_name,
                 'qty'  => $request -> p_qty,
                 'price'=> $request -> p_price,
                 'remark' => $request -> p_remark,
-                'total'=> $request -> p_qty * $request->p_price
+                'total'=> $request -> p_qty * $request->p_price,
+                'image' => $filename
             ]
         );
         if($result){
