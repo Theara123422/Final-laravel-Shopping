@@ -16,6 +16,7 @@
             <th>Price</th>
             <th>Total</th>
             <th>Remark</th>
+            <th>Image</th>
             <th>Action</th>
         </tr>
         @foreach ($datas as $data)
@@ -26,6 +27,9 @@
                 <td>{{$data -> price}}</td>
                 <td>{{$data -> total}}</td>
                 <td>{{$data -> remark}}</td>
+                <td>
+                    <img width="80" src="./image/{{$data -> image}}" alt="">
+                </td>
                 <td>
                     <a href="/update/{{$data -> id}}">Update</a>
                     <a href="/delete/{{$data -> id}}">Remove</a>

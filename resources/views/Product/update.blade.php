@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Update Product</h2>
-    <form action="/product/submit-update" method="post">
+    <form action="/product/submit-update" method="post" enctype="multipart/form-data">
         @csrf
         <input type="hidden" value="{{$data[0] -> id}}" name="updated_id">
         <label for="">Name : &emsp;</label>
@@ -18,6 +18,9 @@
         <input type="text" name="updated_price" placeholder="Product's Price"  value="{{$data[0] -> price}}"><br><br>
         <label for="">Remark : </label>
         <input type="text" name="updated_remark" placeholder="Product's Remark"  value="{{$data[0] -> remark}}"><br><br>
+        <label for="">Image : </label>
+        <input type="file" name="updated_image"><br><br>
+        <input type="hidden" name="old_image" value="{{$data[0] -> image}}">
         <input type="submit" value="Submit" name="btn_submit">
     </form>
 </body>

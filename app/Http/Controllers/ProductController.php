@@ -57,6 +57,13 @@ class ProductController extends Controller
     }
 
     public function submitEditProduct(Request $request){
+        if ($request->hasFile('updated_image')) {
+            $newFile = $request->file('updated_image');
+            $newFileName = time() . '-' . $newFile->getClientOriginalName();
+            $newFile->move('./image/',$newFileName);
+        }else{
+            $newFileName = $request->old_image;
+        }
         $result = DB::table('product')
                     ->where('id',$request -> updated_id)
                     ->update([
@@ -64,7 +71,8 @@ class ProductController extends Controller
                         'qty'  => $request -> updated_qty,
                         'price'=> $request->  updated_price,
                         'remark' => $request -> updated_remark,
-                        'total' => $request -> updated_qty * $request -> updated_price
+                        'total' => $request -> updated_qty * $request -> updated_price,
+                        'image' => $newFileName
                     ]);    
         if($result){
             return redirect('/');
