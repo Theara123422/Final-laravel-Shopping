@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Dashboard\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login',function(){
-    return view('dashboard.home');
-});
+Route::get('auth/register' , [AuthController::class , 'register']);
+Route::post('auth/submit-register', [AuthController::class , 'createUser']);
+Route::get('auth/login', [AuthController::class , 'login'])->name('login');
+
+Route::get('/', [HomeController::class , 'index'])->middleware('auth');
 

@@ -256,7 +256,7 @@
               </div>
               <!-- /Search -->
  
-              <ul class="navbar-nav flex-row align-items-center ">
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
                 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">

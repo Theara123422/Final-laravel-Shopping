@@ -13,8 +13,8 @@
           <div class="card-body">
             <!-- Logo -->
 
-            @if (Session::has('message'))
-                <p class="text-danger text-center">{{ Session::get('message') }}</p>
+            @if (Session::has('success'))
+                <p class="text-success text-center">{{ Session::get('success') }}</p>
             @endif
 
             <form id="formAuthentication" class="mb-3" action="/signin-submit" method="POST">
@@ -64,7 +64,7 @@
 
             <p class="text-center">
               <span>New on our platform?</span>
-              <a href="/signup">
+              <a href="/auth/register">
                 <span>Create an account</span>
               </a>
             </p>

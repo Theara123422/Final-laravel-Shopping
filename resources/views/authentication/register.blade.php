@@ -12,11 +12,11 @@
         <div class="card">
           <div class="card-body">
 
-            @if (Session::has('message'))
-                <p class="text-danger text-center">{{ Session::get('message') }}</p>
+            @if (session('error'))
+                <p class="text-danger text-center">{{ session('error')}}</p>
             @endif
 
-            <form id="formAuthentication" class="mb-3" action="/signup-submit" method="POST" enctype="multipart/form-data">
+            <form id="formAuthentication" class="mb-3" action="/auth/submit-register" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
@@ -49,15 +49,15 @@
               </div>
               <div class="mb-3">
                 <label class="form-label">Profile</label>
-                <input type="file" class="form-control" name="profile" >
+                <input type="file" class="form-control" name="profile" id="profile">
               </div>
 
-              <button class="btn btn-primary d-grid w-100">Sign up</button>
+              <button type="submit" class="btn btn-primary d-grid w-100">Sign up</button>
             </form>
 
             <p class="text-center">
               <span>Already have an account?</span>
-              <a href="/signin">
+              <a href="{{route('login')}}">
                 <span>Sign in instead</span>
               </a>
             </p>
