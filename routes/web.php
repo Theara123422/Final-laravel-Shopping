@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('auth/register' , [AuthController::class , 'register']);
 Route::post('auth/submit-register', [AuthController::class , 'createUser']);
 Route::get('auth/login', [AuthController::class , 'login'])->name('login');
+Route::post('/submit-login', [AuthController::class,'submitLogin']);
 
 Route::get('/', [HomeController::class , 'index'])->middleware('auth');
 

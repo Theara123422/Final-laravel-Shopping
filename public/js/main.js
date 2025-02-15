@@ -116,3 +116,9 @@ let menu, animate;
   // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
 })();
+
+let alert = document.getElementById('alert');
+
+setTimeout(() => {
+    alert.remove();
+},3000);

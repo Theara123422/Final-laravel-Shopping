@@ -14,10 +14,14 @@
             <!-- Logo -->
 
             @if (Session::has('success'))
-                <p class="text-success text-center">{{ Session::get('success') }}</p>
+                <p class="alert alert-success" id="alert">{{ Session::get('success') }}</p>
             @endif
 
-            <form id="formAuthentication" class="mb-3" action="/signin-submit" method="POST">
+            @if (Session::has('error'))
+                <p class="alert alert-danger" id="alert">{{ Session::get('error') }}</p>  
+            @endif
+
+            <form id="formAuthentication" class="mb-3" action="/submit-login" method="POST">
               @csrf
               <div class="mb-3">
                 <label for="email" class="form-label">Email or Username</label>
