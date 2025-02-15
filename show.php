@@ -9,5 +9,8 @@
             <th>Image</th>
             <th>Action</th>
         </tr>
+        <tbody id="display">
+
+        </tbody>
         </table>
 </div>

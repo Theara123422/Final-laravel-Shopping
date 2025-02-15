@@ -39,7 +39,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel" >Add Car</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close"  id='btn-close' data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form method="post" enctype="multipart/form-data">
@@ -59,12 +59,13 @@
                             <textarea name="c_remark" class="form-control border border-2 border-primary" id="p_remark"></textarea>
                             <label for="" class="form-label my-3">Image : </label>
                             <input type="file" name="c_image" id="image" class="form-control">
-                            <input type="hidden" id="hidden_image" name="hidden_image">
+                            <input type="hidden" id="hidden_image" name="hidden_image"><br>
+                            <img width="80" height="80" id="display_image" src="https://placehold.co/80" alt="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success" name="btn_confirm_add" id="btn_confirm_add">Confirm Add</button>
-                        <button type="submit" name="btn_confirm_update" class="btn btn-warning" id="btn_confirm_edit">Confirm Edit</button>
+                        <button type="button" class="btn btn-success" name="btn_confirm_add" id="btn_confirm_add">Confirm Add</button>
+                        <button type="button" name="btn_confirm_update" class="btn btn-warning" id="btn_confirm_edit">Confirm Edit</button>
                     </div>
                     </form>
 
@@ -103,6 +104,20 @@
 </html>
 <script>
         $(document).ready(function(){
+            
+            $.ajax({
+                url : 'server.php',
+                method : 'POST',
+                data   : {
+                    'action' : 'read'
+                },
+                success : function(response){
+                    if(response){
+                        $('#display').html(response);
+                    }
+                }
+            });
+
             $('#image').on('change',function(){
                 const image = $('#image')[0].files[0]; //get file name          
                 const formData = new FormData();
@@ -116,8 +131,9 @@
                     contentType : false,
                     processData :false,
                     success :function(response){
-                        if(response == 'Okay'){
-                            console.log("Success upload image");
+                        if(response){
+                            $('#display_image').attr('src','./upload/'+response);
+                            $('#hidden_image').val(response);
                         }
                     },
                     error : function(xh,status,error){
@@ -131,8 +147,9 @@
             $('#btn_confirm_add').on('click',function(){
                 let name   =  $('#p_name').val();
                 let brand  =  $('#p_brand').val();
-                let price  =  $('#p_name').val();
+                let price  =  $('#p_price').val();
                 let remark =  $('#p_remark').val();
+                let image  =  $('#hidden_image').val();
 
                 $.ajax({
                     url : 'server.php',
@@ -141,7 +158,29 @@
                         name,
                         brand,
                         price,
-                        remark
+                        remark,
+                        image,
+                        action : 'add'
+                    },
+                    success : function(response) {
+                        console.log(response)
+                        if(response == 'success'){
+                            swal({
+                                title: "Success Add Product",
+                                text: "You added the product!",
+                                icon: "success",
+                                button: "Confirm",
+                            });
+                            $('#btn-close').click();
+                        }
+                    },
+                    error : function(xhr,status,message){
+                        swal({
+                                title: "Failed Add Product",
+                                text: message,
+                                icon: "error",
+                                button: "Confirm",
+                        });
                     }
                 })
             })
