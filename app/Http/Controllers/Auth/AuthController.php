@@ -77,4 +77,15 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Login Failed');
         }
     }
+
+    public function logout(){
+        return view('dashboard.logout');
+    }
+
+    public function submitLogout(){
+        
+        Auth::logout();
+
+        return redirect()->route('login')->with('success','Logout Success');
+    }
 }

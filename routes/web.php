@@ -21,4 +21,6 @@ Route::get('auth/login', [AuthController::class , 'login'])->name('login');
 Route::post('/submit-login', [AuthController::class,'submitLogin']);
 
 Route::get('/', [HomeController::class , 'index'])->middleware('auth');
+Route::get('/auth/logout' , [AuthController::class,'logout'])->middleware('auth');
+Route::post('/submit-logout',[AuthController::class , 'submitLogout']);
 
