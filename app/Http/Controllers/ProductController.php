@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -18,6 +19,19 @@ class ProductController extends Controller
     }
 
     public function submitCreateProduct(Request $request){
+
+        $validator = Validator::make($request->all(),[
+            'p_name' => 'required|string|max:5',
+            'p_qty'  => 'required|integer',
+            'p_price' => 'required',
+            'p_remark' => 'required|string|max:255',
+            'p_image' => 'required|mimes:jpg,png,jpeg'
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
+
         $name = $request -> p_name;
         $qty  = $request -> p_qty;
         $price= $request -> p_price;
@@ -39,7 +53,7 @@ class ProductController extends Controller
                         ]
                     );
         if($result){
-            return redirect('/');
+            return redirect('/')->with('success','Add Product success');
         }
     }
 

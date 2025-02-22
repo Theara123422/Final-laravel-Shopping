@@ -6,6 +6,11 @@
     <title>Listing Product</title>
 </head>
 <body>
+    @if (Session::has('success'))
+        <p style="color: green;">
+            {{ Session::get('success') }}
+        </p>
+    @endif
     <a href="/create-product">Add Product</a>
     <br><br>
     <table border="1" >
@@ -38,3 +43,4 @@
     </table>
 </body>
 </html>
+
