@@ -105,6 +105,31 @@
 <script>
         $(document).ready(function(){
             
+            $('#btn_add').click(function(){
+                $('#btn_confirm_add').show();
+                $('#btn_confirm_edit').hide();
+            });
+
+            $('body').on('click','#btn_update',function(){
+                $('#btn_confirm_add').hide();
+                $('#btn_confirm_edit').show();
+
+                let id      =  $(this).parents('tr').find('td').eq(0).text();
+                let name    =  $(this).parents('tr').find('td').eq(1).text();
+                let brand   =  $(this).parents('tr').find('td').eq(2).text();
+                let price   =  $(this).parents('tr').find('td').eq(3).text();
+                let remark  =  $(this).parents('tr').find('td').eq(4).text();
+                let image   =  $(this).parents('tr').find('td:eq(5) img').attr('alt');
+
+                $('#p_id').val(id);
+                $('#p_name').val(name);
+                $('#p_brand').val(brand);
+                $('#p_price').val(price);
+                $('#p_remark').val(remark);
+                $('#hidden_image').val(image);
+                $('#display_image').attr('src','./upload/'+image);
+
+            })
             $.ajax({
                 url : 'server.php',
                 method : 'POST',
@@ -170,13 +195,59 @@
                                 text: "You added the product!",
                                 icon: "success",
                                 button: "Confirm",
+                            }).then(()=>{
+                                location.reload();
                             });
-                            $('#btn-close').click();
                         }
                     },
                     error : function(xhr,status,message){
                         swal({
                                 title: "Failed Add Product",
+                                text: message,
+                                icon: "error",
+                                button: "Confirm",
+                        });
+                    }
+                })
+            })
+
+            $('#btn_confirm_edit').click(function(){
+                // e.preventDefault();
+                let id     = $('#p_id').val();
+                let name   = $('#p_name').val();
+                let brand  = $('#p_brand').val();
+                let price  = $('#p_price').val();
+                let remark = $('#p_remark').val();
+                let image  = $('#hidden_image').val();
+
+                // alert(id+name+brand+price+remark+image);
+                $.ajax({
+                    url : 'server.php',
+                    method : 'POST',
+                    data : {
+                        id,
+                        name,
+                        brand,
+                        price,
+                        remark,
+                        image,
+                        acction : 'update'
+                    },
+                    success :function(response){
+                        if(response == 'success'){
+                            swal({
+                                title: "Success Edit Product",
+                                text: "You edited the product!",
+                                icon: "success",
+                                button: "Confirm",
+                            }).then(()=>{
+                                location.reload();
+                            });
+                        }
+                    },
+                    error : function(xhr,status,message){
+                        swal({
+                                title: "Failed edited Product",
                                 text: message,
                                 icon: "error",
                                 button: "Confirm",

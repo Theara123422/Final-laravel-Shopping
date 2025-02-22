@@ -59,7 +59,7 @@
                         <img src="./upload/'.$row['image'].'" alt="'.$row['image'].'" width="80" height="80">
                     </td>
                     <td>
-                        <button class="btn btn-outline-warning">Update</button>
+                        <button class="btn btn-outline-warning" id="btn_update" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Update</button>
                         <button class="btn btn-outline-danger">Delete</button>
                     </td>
                 </tr>
