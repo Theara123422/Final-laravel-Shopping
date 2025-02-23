@@ -35,6 +35,9 @@
     {{-- Select2 --}}
     <link rel="stylesheet" href="{{url('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css')}}">
 
+    {{-- Toastr --}}
+    <link href="{{ url("https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css") }}" rel="stylesheet">
+
     {{-- Jquery --}}
     <script src="{{url('https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js')}}"></script>
 
@@ -52,7 +55,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="/" class="app-brand-link">
               <span class="app-brand-logo demo">
                 <svg
                   width="25"
@@ -121,7 +124,7 @@
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
             <li class="menu-item">
-              <a href="/admin" class="menu-link">
+              <a href="/" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -179,13 +182,13 @@
 
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="/admin/list-category" class="menu-link">
-                    <div data-i18n="Without menu">View Post</div>
+                  <a href="/list-category" class="menu-link">
+                    <div data-i18n="Without menu">View Category</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="/admin/add-category" class="menu-link">
-                    <div data-i18n="Without menu">Add Post</div>
+                  <a href="/create-category" class="menu-link">
+                    <div data-i18n="Without menu">Add Category</div>
                   </a>
                 </li>
               </ul>
@@ -262,7 +265,8 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="./image/{{ Auth::user()->profile }}" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="{{ asset('image/' . Auth::user()->profile) }}" alt class="w-px-40 h-auto rounded-circle" />
+                      <!-- @dump(Auth::user()->profile) -->
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -271,7 +275,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="./image/{{ Auth::user()->profile }}" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="{{ asset('image/' . Auth::user()->profile) }}" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -329,10 +333,18 @@
     {{-- select2 --}}
     <script src="{{url('https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js')}}"></script>
 
+    {{-- Toastr --}}
+    <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js') }}"></script>
+
     <!-- Page JS -->
     <script src="{{url('./js/form-basic-inputs.js')}}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="{{url('https://buttons.github.io/buttons.js')}}"></script>
+
+    <!-- SWAL -->
+    <script src="{{ url('https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js') }}" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    @yield('script');
   </body>
 </html>
