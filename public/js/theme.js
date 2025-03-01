@@ -1,12 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     //Category Select 2
     $('.size-color').select2();
 
-    //Append Value for remove post
-    $('#remove-post-key').click(function() {
-        var postId = $(this).attr('data-value');
-        $('#remove-val').val(postId);
-    })
+
+    // Attach click event to all delete buttons dynamically
+    $(document).on("click", "#remove-post-key", function () {
+        var postId = $(this).data("value");  // Get correct category ID
+        $("#remove-val").val(postId); // Set it inside the modal
+    });
 
 });
