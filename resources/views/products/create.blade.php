@@ -13,12 +13,9 @@ Products
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="col-xl-12">
                 <!-- File input -->
-                <form action="/admin/add-product-submit" method="post" enctype="multipart/form-data">
+                <form action="/submit-add-product" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card">
-                        @if (Session::has('message'))
-                            <p class="text-danger text-center">{{ Session::get('message') }}</p>
-                        @endif
                         <div class="card-body">
 
                             <div class="row">
@@ -64,11 +61,11 @@ Products
                                     </select>
                                 </div>
                                 <div class="mb-3 col-6">
-                                    <label for="formFile" class="form-label text-danger">Recommend image size ..x.. pixels.</label>
+                                    <label for="formFile" class="form-label">Recommend image <span class="text-danger">size 390 x 200 pixels.</span></label>
                                     <input class="form-control" type="file" name="thumbnail" />
                                 </div>
                                 <div class="mb-3 col-12">
-                                    <label for="formFile" class="form-label text-danger">Description</label>
+                                    <label for="formFile" class="form-label">Description</label>
                                     <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
@@ -82,4 +79,14 @@ Products
             </div>
         </div>
     </div>
+
+    @section('script')
+        <script>
+            @if ($errors->any())
+                @foreach ($errors->all() as $err)
+                    toastr.error("{{ $err }}");
+                @endforeach
+            @endif
+        </script>
+    @endsection
 @endsection

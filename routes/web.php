@@ -46,10 +46,13 @@ Route::post('/submit-category', [CategoryController::class, 'store'])
 Route::post('/remove-category/{id}', [CategoryController::class ,'destroy'])
 ->middleware('auth')->name('category.remove');
 
-Route::get('/products', [ProductController::class,'index'])
+Route::get('/product', [ProductController::class,'index'])
 ->middleware('auth');
 
 Route::get('/add-product', [ProductController::class, 'create'])
+->middleware('auth');
+
+Route::post('/submit-add-product', [ProductController::class, 'submitAddProduct'])
 ->middleware('auth');
 //private route
 

@@ -36,7 +36,7 @@ Products
                             <td>{{ $product->id }}</td>
                             <td>
                                 <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                    <img src="../uploads/{{123}}" alt="Avatar" class="rounded-circle"
+                                    <img src="./products/{{ $product -> thumbnail }}" alt="Avatar" class="rounded-circle"
                                         style="width: 50px;
                             object-fit: cover;
                             border-radius: 0px !important;
@@ -46,7 +46,7 @@ Products
                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->name }}</strong></td>
                             <td>{{ $product->qty }} </td>
                             <td>{{ $product->regular_price }} $</td>
-                            <td>{{ $product->sale_price }} $</td>
+                            <td>{{ $product->sales_price }} $</td>
                             <td><span class="badge bg-label-success me-1">{{ $product -> category_name }}</span></td>
                             <td><span class="badge bg-label-primary me-1">{{ $product->color }}</span></td>
                             <td><span class="badge bg-label-primary me-1">{{ $product->size }}</span></td>
@@ -59,7 +59,7 @@ Products
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="update-product/{{ $proVal->id }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="update-product/{{ $product->id }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                         <a class="dropdown-item" id="remove-post-key" data-value="1" data-bs-toggle="modal" data-bs-target="#basicModal" href="javascript:void(0);"><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>
                                 </div>
@@ -94,4 +94,12 @@ Products
     </div>
     <!-- / Content -->
 </div>
+@endsection
+
+@section('script')
+    <script>
+        @if (Session::has('success'))
+            toastr.success("{{ Session::get('success') }}");
+        @endif
+    </script>
 @endsection
