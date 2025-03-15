@@ -13,49 +13,60 @@ function register_user()
         $password = $_POST['password'];
         $profile  = $_FILES['profile']['name'];
 
-        if (!empty($username) && !empty($email) && !empty($password) && !empty($profile)) {
-            $password = md5($password);
-
-            $image = date('YmdHis') . '-' . $profile;
-            move_uploaded_file($_FILES['profile']['tmp_name'], './assets/profile/' . $image);
-
-            $statement = $connection->prepare('INSERT INTO tbl_user (username, email, password, profile) VALUES (:username, :email, :password, :profile)');
-            $statement->execute([
-                ':username' => $username,
-                ':email' => $email,
-                ':password' => $password,
-                ':profile' => $image
-            ]);
-
-            if ($statement) {
-                echo '
-                        <script>
-                            $(document).ready(function(){
-                                swal({
-                                    title: "User created success",
-                                    text: "You register success!",
-                                    icon: "success",
-                                });
-                            })
-                        </script>
-                    ';
-            }
+        if (empty($username) && empty($email) && empty($password) && empty($profile)) {
+            show_alert('All field Cannot be null', 'You must input all the field', 'error');
+            return;
         }
-        else{
-            
-            echo '
-                    <script>
-                        $(document).ready(function(){
-                            swal({
-                                title: "All field is required",
-                                text: "You must input all field!",
-                                icon: "error",
-                            });
-                        })
-                    </script>
-                ';
-          
+
+        $password = password_hash($password, PASSWORD_BCRYPT);
+
+        $image = date('YmdHis') . '-' . $profile;
+        move_uploaded_file($_FILES['profile']['tmp_name'], './assets/profile/' . $image);
+
+        $statement = $connection->prepare('INSERT INTO tbl_user (username, email, password, profile) VALUES (:username, :email, :password, :profile)');
+        $statement->execute([
+            ':username' => $username,
+            ':email' => $email,
+            ':password' => $password,
+            ':profile' => $image
+        ]);
+
+        if ($statement) {
+            show_alert('User created', 'You register success', 'success', 'login.php');
         }
     }
 }
 register_user();
+
+function show_alert($title, $text, $info, $redirect = null)
+{
+    if($redirect != null){
+        echo "
+            <script>
+                $(document).ready(function(){
+                    swal({
+                        title: '$title',
+                        text: '$text',
+                        icon: '$info',
+                    })
+                    .then(()=>{
+                        window.location.href = '$redirect'
+                    });
+                })
+            </script>
+        ";
+    }
+    else{
+        echo "
+            <script>
+                $(document).ready(function(){
+                    swal({
+                        title: '$title',
+                        text: '$text',
+                        icon: '$info',
+                    })
+                })
+            </script>
+        ";
+    }
+}
