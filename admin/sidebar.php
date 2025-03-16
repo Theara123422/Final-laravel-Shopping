@@ -1,5 +1,15 @@
 <?php 
-    require 'function.php';
+     require 'function.php';
+    $user_id = $_SESSION['id'];
+
+    $statement = $connection -> prepare('SELECT * FROM tbl_user WHERE id = :user_id');
+
+    $statement -> execute([
+        ':user_id' => $user_id
+    ]);
+
+    $row = $statement -> fetch(PDO::FETCH_ASSOC);    
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,8 +45,8 @@
                             <h5>Jong Deng News</h5>
                         </div>
                         <div class="wrap-center">
-                            <img src="https://via.placeholder.com/40" alt="">
-                            <h6>Welcome Admin Sok</h6>
+                            <img width="50" src="./assets/profile/<?php echo $row['profile']; ?>" alt="">
+                            <h6>Welcome Admin <?php echo ucwords    ($row['username']); ?></h6>
                         </div>
                         <div class="wrap-bottom">
                             <ul>
@@ -53,16 +63,9 @@
                                     </ul>
                                 </li>
                                 <li class="parent">
-                                    <a class="parent" href="javascript:void(0)">
-                                        <span>MAIN MENU</span>
-                                        <img src="assets/icon/arrow.png" alt="">
+                                    <a class="parent" href="logout.php">
+                                        <span>Logout</span>
                                     </a>
-                                    <ul class="child">
-                                        <li>
-                                            <a href="1">View Post</a>
-                                            <a href="1">Add New</a>
-                                        </li>
-                                    </ul>
                                 </li>
                             </ul>
                         </div>

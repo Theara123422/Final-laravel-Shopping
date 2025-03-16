@@ -1,11 +1,10 @@
 <?php 
-    include('sidebar.php');
-
     session_start();
 
-    if(!($_SESSION['id'])){
+    if(!$_SESSION['id']){
         header('location: login.php');
     }
+    include('sidebar.php');
 ?>
                 <div class="col-10">
                     <div class="content-right">
