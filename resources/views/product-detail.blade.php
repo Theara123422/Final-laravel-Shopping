@@ -18,37 +18,45 @@
 <main class="shop product-detail">
 
 <section class="review">
+    <!-- <?php 
+        dump($product -> thumbnail);
+    ?> -->
     <div class="container">
         <div class="row">
             <div class="col-5">
                 <div class="thumbnail">
-                    <img src="https://placehold.co/450x670" alt="">
+                    <img width="400" height="500" src="http://localhost/profile/{{ $product -> thumbnail }}" alt="">
                 </div>
             </div>
             <div class="col-7">
                 <div class="detail">
                     <div class="price-list">
-                        <div class="price d-none">US 30.5</div>
-                        <div class="regular-price"><strike> US 30.5</strike></div>
-                        <div class="sale-price">US 23.6</div>
+                        @if ($product -> sales_price <= 0)
+                            <div class="regular-price"> US {{ $product -> regular_price }}</div>
+                        @endif
+                        @if ($product -> sales_price > 0)
+                            <div class="regular-price text-decoration-line-through"> US {{ $product -> regular_price }}</div>
+                            <div class="sale-price">US {{ $product -> sales_price }}</div>
+                            <div class="sale-price text-danger"> {{ number_format((($product -> sales_price * 100) / $product -> regular_price),2)}} % Off</div>
+                        @endif
                     </div>
-                    <h5 class="title">Plain T-shirt</h5>
+                    <h5 class="title">{{ $product -> name }}</h5>
                     <div class="group-size">
                         <span class="title">Color Available</span>
                         <div class="group">
-                            Red ,Yellow ,Green
+                            {{ ucwords($product -> color,',') }}
                         </div>
                     </div>
                     <div class="group-size">
                         <span class="title">Size Available</span>
                         <div class="group">
-                            XS ,S ,M ,L ,XL ,XXL
+                            {{ ucwords($product -> size,',') }}
                         </div>
                     </div>
                     <div class="group-size">
                         <span class="title">Description</span>
                         <div class="description">
-                            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                            {{ $product -> decription }}
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ Home Page
                             </div>
                             @endif
                             <a href="/product-details/{{ $latestProduct -> id }}">
-                                <img src="https://placehold.co/450x670" alt="">
+                                <img src="http://127.0.0.1/profile/{{ $latestProduct -> thumbnail }}" alt="">
                             </a>
                         </div>
                         <div class="detail">
@@ -33,7 +33,7 @@ Home Page
                                 <div class="regular-price "><strike> US {{ $latestProduct -> regular_price }}</strike></div>
                                 @if ($latestProduct -> sales_price > 0)
                                 <div class="sale-price ">US {{ $latestProduct -> sales_price }} </div>
-                                <div class="sale-price text-danger"> {{ ($latestProduct -> sales_price * 100) / $latestProduct -> regular_price}} % Off</div>
+                                <div class="sale-price text-danger"> {{ number_format((($latestProduct -> sales_price * 100) / $latestProduct -> regular_price),2)}} % Off</div>
                                 @endif
                             </div>
                             <h5 class="title">{{ $latestProduct -> name }}</h5>
