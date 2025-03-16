@@ -4,40 +4,6 @@
 
 require_once '../shared/connection.php';
 
-function register_user()
-{
-    global $connection;
-    if (isset($_POST['btn_register'])) {
-        $username = $_POST['username'];
-        $email    = $_POST['email'];
-        $password = $_POST['password'];
-        $profile  = $_FILES['profile']['name'];
-
-        if (empty($username) && empty($email) && empty($password) && empty($profile)) {
-            show_alert('All field Cannot be null', 'You must input all the field', 'error');
-            return;
-        }
-
-        $password = password_hash($password, PASSWORD_BCRYPT);
-
-        $image = date('YmdHis') . '-' . $profile;
-        move_uploaded_file($_FILES['profile']['tmp_name'], './assets/profile/' . $image);
-
-        $statement = $connection->prepare('INSERT INTO tbl_user (username, email, password, profile) VALUES (:username, :email, :password, :profile)');
-        $statement->execute([
-            ':username' => $username,
-            ':email' => $email,
-            ':password' => $password,
-            ':profile' => $image
-        ]);
-
-        if ($statement) {
-            show_alert('User created', 'You register success', 'success', 'login.php');
-        }
-    }
-}
-register_user();
-
 function show_alert($title, $text, $info, $redirect = null)
 {
     if($redirect != null){
@@ -70,3 +36,84 @@ function show_alert($title, $text, $info, $redirect = null)
         ";
     }
 }
+
+function upload_file($name, $destination){
+    $file = $_FILES[$name]['name'];
+    $file_name = date('YmdHis') .'-'. $file;
+
+    if(!file_exists('./assets/'.$destination)){
+        mkdir('./assets/'.$destination, 755, 1);
+    }
+    move_uploaded_file($_FILES[$name]['tmp_name'], './assets/'.$destination.'/'.$file_name);
+
+    return $file_name;
+}
+
+function register_user()
+{
+    global $connection;
+    if (isset($_POST['btn_register'])) {
+        $username = $_POST['username'];
+        $email    = $_POST['email'];
+        $password = $_POST['password'];
+        $profile  = $_FILES['profile']['name'];
+
+        if (empty($username) || empty($email) || empty($password) || empty($profile)) {
+            show_alert('All field Cannot be null', 'You must input all the field', 'error');
+            return;
+        }
+
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        $image = upload_file('profile', 'profile');
+
+        $statement = $connection->prepare('INSERT INTO tbl_user (username, email, password, profile) VALUES (:username, :email, :password, :profile)');
+        $statement->execute([
+            ':username' => $username,
+            ':email' => $email,
+            ':password' => $password,
+            ':profile' => $image
+        ]);
+
+        if ($statement) {
+            show_alert('User created', 'You register success', 'success', 'login.php');
+        }
+    }
+}
+register_user();
+
+function login_user(){
+    global $connection;
+
+    if(isset($_POST['btn_login'])){
+        $name_email  =  trim($_POST['name_email']);
+        $password    =  trim($_POST['password']);
+
+        if(empty($name_email) || empty($password)){
+            show_alert('All field cannot be null', 'Please fill in all field', 'error');
+            return;
+        }
+
+        $statement = $connection->prepare('SELECT * FROM tbl_user WHERE username = :name_email OR email = :name_email');
+
+        $statement -> execute([
+            ':name_email' => $name_email
+        ]);
+
+        if($statement->rowCount() > 0){
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            if(password_verify($password, $row['password'])){
+                session_start();
+                $_SESSION['id'] = $row['id'];
+
+                show_alert('Login Success', 'You have logged in successfully', 'success', 'index.php');
+            } else {
+                show_alert('Login Failed', 'Invalid credentials', 'error');
+            }
+        } else {
+            show_alert('Login Failed', 'Invalid credentials', 'error');
+        }
+    }
+}
+login_user();
+

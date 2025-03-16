@@ -1,5 +1,11 @@
 <?php 
     include('sidebar.php');
+
+    session_start();
+
+    if(!($_SESSION['id'])){
+        header('location: login.php');
+    }
 ?>
                 <div class="col-10">
                     <div class="content-right">
