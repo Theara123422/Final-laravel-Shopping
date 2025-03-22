@@ -63,14 +63,14 @@ Home Page
                                 Promotion
                             </div>
                             <a href="/product-details/{{ $promotionProduct -> id }}">
-                                <img src="https://placehold.co/450x670" alt="">
+                                <img src="http://127.0.0.1/profile/{{ $promotionProduct -> thumbnail }}" alt="">
                             </a>
                         </div>
                         <div class="detail">
                             <div class="price-list">
                                 <div class="regular-price "><strike> US {{ $promotionProduct -> regular_price }}</strike></div>
                                 <div class="sale-price ">US {{ $promotionProduct -> sales_price }}</div>
-                                <div class="sale-price text-danger"> {{ ($latestProduct -> sales_price * 100) / $latestProduct -> regular_price}} % Off</div>
+                                <div class="sale-price text-danger"> {{ number_format(($promotionProduct -> sales_price * 100) / $promotionProduct -> regular_price,2) }} % Off</div>
                             </div>
                             <h5 class="title">{{ $promotionProduct -> name }}</h5>
                         </div>
@@ -104,15 +104,15 @@ Home Page
                             </div>
                             @endif
                             <a href="/product-details/{{ $mostViewProduct -> id }}">
-                                <img src="https://placehold.co/450x670" alt="">
+                                <img src="http://127.0.0.1/profile/{{$mostViewProduct->thumbnail}}" alt="">
                             </a>
                         </div>
                         <div class="detail">
                             <div class="price-list">
-                                <div class="regular-price "><strike> US {{ $promotionProduct -> regular_price }}</strike></div>
+                                <div class="regular-price "><strike> US {{ $mostViewProduct -> regular_price }}</strike></div>
                                 @if($mostViewProduct -> sales_price > 0)
-                                    <div class="sale-price ">US {{ $promotionProduct -> sales_price }}</div>
-                                    <div class="sale-price text-danger"> {{ ($latestProduct -> sales_price * 100) / $latestProduct -> regular_price}} % Off</div>
+                                    <div class="sale-price ">US {{ $mostViewProduct -> sales_price }}</div>
+                                    <div class="sale-price text-danger"> {{ number_format(($mostViewProduct -> sales_price * 100) / $mostViewProduct -> regular_price,2)}} % Off</div>
                                 @endif
                             </div>
                             <h5 class="title">{{ $mostViewProduct -> name }}</h5>

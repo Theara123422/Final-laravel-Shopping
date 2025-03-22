@@ -30,3 +30,5 @@ Route::get('/search',[ SearchController::class , 'index']);
 Route::get('/product-details/{id}', [ProductDetailController::class,'index']);
 
 Route::get('/article/{id}', [NewsDetailController::class, 'index']);
+
+Route::get('/product/filter', [ShopController::class, 'filterProduct']);

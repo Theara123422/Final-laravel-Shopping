@@ -12,166 +12,6 @@
                         <div class="row">
                             <div class="col-9">
                                 <div class="row">
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
-                                    <div class="col-4">
-                                        <figure>
-                                            <div class="thumbnail">
-                                                <div class="status">
-                                                    Promotion
-                                                </div>
-                                                <a href="">
-                                                    <img src="https://placehold.co/450x670" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="detail">
-                                                <div class="price-list">
-                                                    <div class="price d-none">US 10</div>
-                                                    <div class="regular-price "><strike> US 15</strike></div>
-                                                    <div class="sale-price ">US 12</div>
-                                                </div>
-                                                <h5 class="title">T-Shirt 001</h5>
-                                            </div>
-                                        </figure>
-                                    </div>
                                     
                                     <div class="col-12">
                                         <ul class="pagination">
@@ -188,36 +28,42 @@
                                     <li>
                                         <a href="/shop">ALL</a>
                                     </li>
-                                    <li>
-                                        <a href="/shop?cat=">Men</a>
-                                    </li> 
-                                    <li>
-                                        <a href="/shop?cat=">Women</a>
-                                    </li> 
-                                    <li>
-                                        <a href="/shop?cat=">Girl</a>
-                                    </li> 
-                                    <li>
-                                        <a href="/shop?cat=">Boy</a>
-                                    </li> 
+                                    @foreach ($listCategories as $listCategory)
+                                        <li class="filter-category">
+                                            <a category="{{ $listCategory -> id }}" href="/shop">{{ $listCategory -> category_name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
-                                
-                                <h4 class="title mt-4">Price</h4>
-                                <div class="block-price mt-4">
-                                    <a href="/shop?price=max">High</a>
-                                    <a href="/shop?price=min">Low</a>
-                                </div>
-            
-                                <h4 class="title mt-4">Promotion</h4>
-                                <div class="block-price mt-4">
-                                    <a href="/shop?promotion=true">Promotion Product</a>
-                                </div>
-            
                             </div>
                         </div>
                     </div>
                 </section>
-            
             </main>
         </main>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('.filter ul .filter-category a').on('click',function(e){
+                e.preventDefault();
+                const category = $(this).attr('category')
+
+                $.ajax({
+                    url : '/product/filter',
+                    method : 'GET',
+                    data : {
+                        category
+                    },
+                    success : function(response){
+                        $('.container .row .col-9 .row').html(response);
+                    },
+                    error :function (){
+                        console.log("error");
+                    }
+                })
+                
+            })
+        });
+    </script>
 @endsection
