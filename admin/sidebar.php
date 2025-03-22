@@ -1,5 +1,11 @@
 <?php 
-     require 'function.php';
+    require 'function.php';
+
+    session_start();
+    if(!$_SESSION['id']){
+        header('location: login.php');
+    }
+
     $user_id = $_SESSION['id'];
 
     $statement = $connection -> prepare('SELECT * FROM tbl_user WHERE id = :user_id');
@@ -52,13 +58,13 @@
                             <ul>
                                 <li class="parent">
                                     <a class="parent" href="javascript:void(0)">
-                                        <span>MAIN MENU</span>
+                                        <span>Logo</span>
                                         <img src="assets/icon/arrow.png" alt="">
                                     </a>
                                     <ul class="child">
                                         <li>
-                                            <a href="view-post.php">View Post</a>
-                                            <a href="add-post.php">Add New</a>
+                                            <a href="view-logo.php">View Logo</a>
+                                            <a href="add-logo.php">Add Logo</a>
                                         </li>
                                     </ul>
                                 </li>
