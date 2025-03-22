@@ -35,6 +35,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/script.js"></script>
 
     <!-- @tinyACE -->
     <script src="https://cdn.tiny.cloud/1/5gqcgv8u6c8ejg1eg27ziagpv8d8uricc4gc9rhkbasi2nc4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

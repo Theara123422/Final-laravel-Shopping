@@ -173,10 +173,10 @@ function display_logo()
             echo '
                 <tr>
                     <td>'.$row['id'].'</td>
-                    <td><img width="80px" src="./assets/logo/'.$row['thumbnail'].'"/></td>
+                    <td><img width="80px" src="./assets/logo/'.$row['thumbnail'].'" alt="'.$row['thumbnail'].'"/></td>
                     <td>'.ucwords($row['location']).'</td>
                     <td width="150px">
-                        <a href=""class="btn btn-primary">Update</a>
+                        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn-edit">Update</a>
                         <button type="button" remove-id="1" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Remove
                         </button>
@@ -186,4 +186,33 @@ function display_logo()
         }
     }
 }
+
+function update_logo(){
+    global $connection;
+
+    if(isset($_POST['btn_confirm_update_logo'])){
+        $updated_id  =  $_POST['updated_id'];
+        $location    =  $_POST['location'];
+
+        if(empty($_FILES['logo_thumbnail']['name'])){
+            echo $thumbnail = $_POST['old_text_logo'];
+        }
+        else{
+            echo $thumbnail = upload_file('logo_thumbnail','logo');
+        }   
+
+        $statement  =   $connection -> prepare('UPDATE tbl_logo SET location = :location, thumbnail = :thumbnail WHERE id = :id');
+
+        $statement -> execute([
+            ':location' => $location,
+            ':thumbnail' => $thumbnail,
+            ':id' => $updated_id
+        ]);
+
+        if($statement){
+            show_alert('Logo updated success','You have updated logo','success');
+        }
+    }
+}
+update_logo();
 
