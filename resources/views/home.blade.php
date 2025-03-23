@@ -25,7 +25,7 @@ Home Page
                             </div>
                             @endif
                             <a href="/product-details/{{ $latestProduct -> id }}">
-                                <img src="http://127.0.0.1/profile/{{ $latestProduct -> thumbnail }}" alt="">
+                                <img height="400px" src="http://127.0.0.1/profile/{{ $latestProduct -> thumbnail }}" alt="">
                             </a>
                         </div>
                         <div class="detail">
@@ -63,7 +63,7 @@ Home Page
                                 Promotion
                             </div>
                             <a href="/product-details/{{ $promotionProduct -> id }}">
-                                <img src="http://127.0.0.1/profile/{{ $promotionProduct -> thumbnail }}" alt="">
+                                <img height="400px" src="http://127.0.0.1/profile/{{ $promotionProduct -> thumbnail }}" alt="">
                             </a>
                         </div>
                         <div class="detail">
@@ -104,7 +104,7 @@ Home Page
                             </div>
                             @endif
                             <a href="/product-details/{{ $mostViewProduct -> id }}">
-                                <img src="http://127.0.0.1/profile/{{$mostViewProduct->thumbnail}}" alt="">
+                                <img height="400px" src="http://127.0.0.1/profile/{{$mostViewProduct->thumbnail}}" alt="">
                             </a>
                         </div>
                         <div class="detail">

@@ -10,7 +10,8 @@ class ShopController extends Controller
 {
     public function index(){
         $listCategories = Category::all();
-        return view('shop', compact('listCategories'));
+        $products       = Product::all();
+        return view('shop', compact('listCategories','products'));
     }
 
     public function filterProduct(Request $request){

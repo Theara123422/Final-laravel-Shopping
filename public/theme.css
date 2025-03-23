@@ -224,6 +224,7 @@ figure .thumbnail .status {
 }
 .home .thumbnail {
     position: relative;
+    /* height: 150px; */
 }
 
 .news-blog .detail {
