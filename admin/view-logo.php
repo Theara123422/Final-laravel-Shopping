@@ -4,7 +4,7 @@ require 'sidebar.php';
 <div class="col-10">
     <div class="content-right">
         <div class="top">
-            <h3>All Sport News</h3>
+            <h3>All Logos</h3>
         </div>
         <div class="bottom view-post">
             <figure>
@@ -78,7 +78,7 @@ require 'sidebar.php';
                                 <div class="modal-footer">
                                     <form action="" method="post">
                                         <input type="hidden" class="value_remove" name="remove_id">
-                                        <button type="submit" class="btn btn-danger">Yes</button>
+                                        <button name="btn_confirm_remove_logo" type="submit" class="btn btn-danger">Yes</button>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                                     </form>
                                 </div>

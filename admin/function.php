@@ -177,7 +177,7 @@ function display_logo()
                     <td>'.ucwords($row['location']).'</td>
                     <td width="150px">
                         <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" id="btn-edit">Update</a>
-                        <button type="button" remove-id="1" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" remove-id="'.$row['id'].'" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Remove
                         </button>
                     </td>
@@ -195,10 +195,10 @@ function update_logo(){
         $location    =  $_POST['location'];
 
         if(empty($_FILES['logo_thumbnail']['name'])){
-            echo $thumbnail = $_POST['old_text_logo'];
+            $thumbnail = $_POST['old_text_logo'];
         }
         else{
-            echo $thumbnail = upload_file('logo_thumbnail','logo');
+            $thumbnail = upload_file('logo_thumbnail','logo');
         }   
 
         $statement  =   $connection -> prepare('UPDATE tbl_logo SET location = :location, thumbnail = :thumbnail WHERE id = :id');
@@ -215,4 +215,25 @@ function update_logo(){
     }
 }
 update_logo();
+
+function remove_logo(){
+    global $connection;
+
+    if(isset($_POST['btn_confirm_remove_logo'])){
+        $remove_id = $_POST['remove_id'];
+
+        $statement = $connection -> prepare('DELETE FROM tbl_logo WHERE id = :id');
+
+        $statement -> execute([
+            ':id' => $remove_id
+        ]);
+
+        if($statement){
+            show_alert('Logo Removed Success','You have deleted Logo','success');
+        }else{
+            show_alert('Logo Removed Failed','You cannot delete Logo','error');
+        }
+    }
+}
+remove_logo();
 

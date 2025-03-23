@@ -4,7 +4,7 @@
                 <div class="col-10">
                     <div class="content-right">
                         <div class="top">
-                            <h3>All Sport News</h3>
+                            <h3>All Logo</h3>
                         </div>
                         <div class="bottom view-post">
                             <figure>
