@@ -2,6 +2,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <?php
 
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+
 require_once '../shared/connection.php';
 
 function show_alert($title, $text, $info, $redirect = null)
@@ -236,4 +238,50 @@ function remove_logo(){
     }
 }
 remove_logo();
+
+
+function create_news(){
+    global $connection;
+    if(isset($_POST['btn_confirm_add_news'])){
+
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $title        =     $_POST['title'];
+        $description  =     $_POST['description'];
+        $type         =     $_POST['type'];
+        $category     =     $_POST['category'];
+        $banner       =     upload_file('banner','news');
+        $thumbnail    =     upload_file('thumbnail','news');    
+        $author_id    =     $_SESSION['id'];  
+
+        
+        $statement    =     $connection -> prepare('
+            INSERT INTO tbl_news 
+            (title, description, type, category, thumbnail, banner, author_id)
+            VALUES (:title, :description, :type, :category, :thumbnail, :banner, :author_id)
+        ');
+
+        $statement  -> execute(
+            [
+                ':title'       => $title,
+                ':description' => $description,
+                ':type'        => $type,
+                ':category'    => $category,
+                ':thumbnail'   => $thumbnail,
+                ':banner'      => $banner,
+                ':author_id'   => $author_id
+            ]
+        );
+
+        if($statement){
+            show_alert('Success create news','You have created a news','success','view-news.php');
+        }
+        else{
+            show_alert('Failed create news','You cannot create a news','error'  );
+        }
+    }
+}
+create_news();
 

@@ -14,13 +14,14 @@
         id
         author_id
         title
-        date
         description
         news_typel
         category
         thumbnail
         banner
         views
+        created_at
+        updated_at
     }
     tbl_about_us = {
         id
