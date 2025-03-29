@@ -30,23 +30,18 @@
                     </li>
                 </ul>
                 <div class="search">
-                    <form action="/search" method="get">
-                        <input type="text" name="s" class="box" placeholder="SEARCH HERE">
-                        <button>
-                            <div style="background-image: url('search.png');
-                                        width: 25px;
-                                        height: 25px;
-                                        background-position: center;
-                                        background-size: contain;
-                                        background-repeat: no-repeat;
-                            "></div>
-                        </button>
+                    <form>
+                        <input type="text" name="s" id="search-box" class="box" placeholder="SEARCH HERE">
+                        <img width="25" height="25" style="margin-left: 180px;" class="position-absolute" src="{{ url('search.png') }}" alt="">
                     </form>
                 </div>
             </div>
         </header>
 
-        @yield('content')
+        <div class="content">
+            @yield('content')
+        </div>
+
 
         <footer>
             <span>
@@ -58,4 +53,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('script')
+    <script>
+        $(document).ready(function(){
+            $('#search-box').on('keyup',function(e){
+                let filter = e.target.value;
+                $.ajax({
+                    url : '/search',
+                    method : 'GET',
+                    data : {
+                        filter
+                    },
+                    success :function(response){
+                        $('.content').html(response);
+                    },
+                    error :function (message, status, xhr){
+                        console.log(message.responseText);
+                    }
+                })
+            })
+        })
+    </script>
 </html>

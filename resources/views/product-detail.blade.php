@@ -1,16 +1,4 @@
 @extends('master')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="theme.css">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
 @section('title')
     Product Detail Page
 @endsection
@@ -37,7 +25,7 @@
                         @if ($product -> sales_price > 0)
                             <div class="regular-price text-decoration-line-through"> US {{ $product -> regular_price }}</div>
                             <div class="sale-price">US {{ $product -> sales_price }}</div>
-                            <div class="sale-price text-danger"> {{ number_format((($product -> sales_price * 100) / $product -> regular_price),2)}} % Off</div>
+                            <div class="sale-price text-danger"> {{ number_format((($product -> regular_price - $product -> sales_price) / $product -> regular_price) * 100,2)}} % Off</div>
                         @endif
                     </div>
                     <h5 class="title">{{ $product -> name }}</h5>

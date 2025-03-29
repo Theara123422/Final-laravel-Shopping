@@ -30,18 +30,21 @@ Home Page
                         </div>
                         <div class="detail">
                             <div class="price-list">
-                                <div class="regular-price "><strike> US {{ $latestProduct -> regular_price }}</strike></div>
-                                @if ($latestProduct -> sales_price > 0)
-                                <div class="sale-price ">US {{ $latestProduct -> sales_price }} </div>
-                                <div class="sale-price text-danger"> {{ number_format((($latestProduct -> sales_price * 100) / $latestProduct -> regular_price),2)}} % Off</div>
-                                @endif
-                            </div>
-                            <h5 class="title">{{ $latestProduct -> name }}</h5>
+                                @if($latestProduct -> sales_price <= 0)
+                                    <div class="regular-price"> US {{ $latestProduct -> regular_price }} </div>
+                            @endif
+                            @if ($latestProduct -> sales_price > 0)
+                            <div class="regular-price "><strike> US {{ $latestProduct -> regular_price }}</strike></div>
+                            <div class="sale-price ">US {{ $latestProduct -> sales_price }} </div>
+                            <div class="sale-price text-danger"> {{ number_format((($latestProduct -> regular_price - $latestProduct -> sales_price) / $latestProduct -> regular_price) * 100,2)}} % Off</div>
+                            @endif
                         </div>
-                    </figure>
+                        <h5 class="title">{{ $latestProduct -> name }}</h5>
                 </div>
-                @endforeach
+                </figure>
             </div>
+            @endforeach
+        </div>
         </div>
     </section>
 
@@ -68,9 +71,14 @@ Home Page
                         </div>
                         <div class="detail">
                             <div class="price-list">
-                                <div class="regular-price "><strike> US {{ $promotionProduct -> regular_price }}</strike></div>
-                                <div class="sale-price ">US {{ $promotionProduct -> sales_price }}</div>
-                                <div class="sale-price text-danger"> {{ number_format(($promotionProduct -> sales_price * 100) / $promotionProduct -> regular_price,2) }} % Off</div>
+                                @if($latestProduct -> sales_price <= 0)
+                                    <div class="regular-price"> US {{ $promotionProduct -> regular_price }} </div>
+                                @endif
+                                @if ($promotionProduct -> sales_price > 0)
+                                    <div class="regular-price "><strike> US {{ $promotionProduct -> regular_price }}</strike></div>
+                                    <div class="sale-price ">US {{ $promotionProduct -> sales_price }}</div>
+                                    <div class="sale-price text-danger"> {{ number_format((($promotionProduct -> regular_price - $promotionProduct -> sales_price) / $promotionProduct -> regular_price) * 100,2)}} % Off</div>
+                                @endif
                             </div>
                             <h5 class="title">{{ $promotionProduct -> name }}</h5>
                         </div>
@@ -109,10 +117,13 @@ Home Page
                         </div>
                         <div class="detail">
                             <div class="price-list">
-                                <div class="regular-price "><strike> US {{ $mostViewProduct -> regular_price }}</strike></div>
+                                @if($mostViewProduct -> sales_price <= 0)
+                                    <div class="regular-price">US {{ $mostViewProduct -> regular_price }}</div>
+                                @endif
                                 @if($mostViewProduct -> sales_price > 0)
+                                    <div class="regular-price "><strike> US {{ $mostViewProduct -> regular_price }}</strike></div>
                                     <div class="sale-price ">US {{ $mostViewProduct -> sales_price }}</div>
-                                    <div class="sale-price text-danger"> {{ number_format(($mostViewProduct -> sales_price * 100) / $mostViewProduct -> regular_price,2)}} % Off</div>
+                                    <div class="sale-price text-danger"> {{ number_format((($mostViewProduct -> regular_price - $mostViewProduct -> sales_price) / $mostViewProduct -> regular_price) * 100,2)}} % Off</div>
                                 @endif
                             </div>
                             <h5 class="title">{{ $mostViewProduct -> name }}</h5>
