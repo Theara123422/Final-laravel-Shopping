@@ -39,11 +39,7 @@ Shop Page
                             </div>
                             @endforeach
                             <div class="col-12">
-                                <ul class="pagination">
-                                    <li>
-                                        <a href="/shop?page=1">1</a>
-                                    </li>
-                                </ul>
+                            {{ $products->links('pagination::bootstrap-5') }}
                             </div>
                         </div>
                     </div>
