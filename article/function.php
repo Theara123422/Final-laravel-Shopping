@@ -41,7 +41,7 @@ function display_new_by_category($category)
             echo '
                 <div class="col-4">
                     <figure>
-                        <a href="">
+                        <a href="news-detail.php?id='.$row['id'].'">
                             <div class="thumbnail">
                                 <img width="350" height="200" src="../admin/assets/news/'.$row['thumbnail'].'" alt="">
                             <div class="title">
