@@ -55,4 +55,20 @@ function display_new_by_category($category)
         }
     }
 }
+function display_trending_new($type){
+    global $connection;
 
+    $statement = $connection->prepare('SELECT * FROM tbl_news ORDER BY views DESC LIMIT 3');
+
+    $statement->execute();
+
+    if($statement->rowCount() > 0){
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        if($type == 'topTrend'){
+            return $rows[0];
+        }
+        elseif($type == 'trend'){
+            return array_splice($rows,1);
+        }
+    }
+}

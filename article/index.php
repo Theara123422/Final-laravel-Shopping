@@ -11,10 +11,15 @@
                         <div class="content-right">
                             <marquee behavior="" direction="left">
                                 <div class="text-news">
-                                    <i class="fas fa-angle-double-right"></i>
-                                    <a href="">ពិធីសម្ពោធដាក់ឱ្យប្រើប្រាស់នូវកំណាត់ផ្លូវជាតិលេខ២៦ ប្រវែងជិត ៦៤គីឡូម៉ែត្រ </a> &ensp;
-                                    <i class="fas fa-angle-double-right"></i>
-                                    <a href="">ពិធីសម្ពោធដាក់ឱ្យប្រើប្រាស់នូវកំណាត់ផ្លូវជាតិលេខ២៦ ប្រវែងជិត ៦៤គីឡូម៉ែត្រ </a>
+                                    
+                                    <?php
+                                        $text_news = display_trending_new('trend');
+                                        foreach($text_news as $text){ 
+                                            echo '<i class="fas fa-angle-double-right"></i> '; 
+                                            echo '<a href="news-detail.php?id='.$text['id'].'">'.$text['title'].'</a> &ensp;';
+                                        }
+                                    ?>
+                                    <!-- <i class="fas fa-angle-double-right"></i> -->
                                 </div>
                             </marquee>
                         </div>
@@ -28,42 +33,43 @@
         <div class="container">
             <div class="row">
                 <div class="col-8 content-left">
-                    <figure>
-                        <a href="news-detail.php">
-                            <div class="thumbnail">
-                                <img src="https://via.placeholder.com/730x415" alt="">
-                                <div class="title">
-                                    អ្នកជំនាញថា កម្ពុជាមិនទាន់ធ្លាក់ចូលទៅក្នុងវិបត្តិបំណុលនោះទេ ខណៈកម្ពុជាអាចនៅអាចគ្រប់គ្រងបានល្អ​
-                                </div>
-                            </div>
-                        </a>
-                    </figure>
+                    <?php
+                        $topTrend = display_trending_new('topTrend');
+                        echo '
+                            <figure>
+                                <a href="news-detail.php?id='.$topTrend['id'].'">
+                                    <div class="thumbnail">
+                                        <img width="730" height="415" src="../admin/assets/news/'.$topTrend['thumbnail'].'" alt="">
+                                        <div class="title">
+                                            '.$topTrend['title'].'
+                                        </div>
+                                    </div>
+                                </a>
+                            </figure>
+                        ';
+                    ?>
                 </div>
                 <div class="col-4 content-right">
-                    <div class="col-12">
-                        <figure>
-                            <a href="">
-                                <div class="thumbnail">
-                                    <img src="https://via.placeholder.com/350x200" alt="">
-                                    <div class="title">
-                                        អ្នកជំនាញថា កម្ពុជាមិនទាន់ធ្លាក់ចូលទៅក្នុងវិបត្តិបំណុលនោះទេ ខណៈកម្ពុជាអាចនៅអាចគ្រប់គ្រងបានល្អ​
-                                    </div>
+                    <?php 
+                        $trendingNews = display_trending_new('trend');
+
+                        foreach($trendingNews as $trendNews){
+                            echo '
+                                <div class="col-12">
+                                    <figure>
+                                        <a href="news-detail.php?id='.$trendNews['id'].'">
+                                            <div class="thumbnail">
+                                                <img width="350" height="200" src="../admin/assets/news/'.$trendNews['thumbnail'].'" alt="">
+                                                <div class="title">
+                                                    '.$trendNews['title'].'
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </figure>
                                 </div>
-                            </a>
-                        </figure>
-                    </div>
-                    <div class="col-12">
-                        <figure>
-                            <a href="">
-                                <div class="thumbnail">
-                                    <img src="https://via.placeholder.com/350x200" alt="">
-                                    <div class="title">
-                                        អ្នកជំនាញថា កម្ពុជាមិនទាន់ធ្លាក់ចូលទៅក្នុងវិបត្តិបំណុលនោះទេ ខណៈកម្ពុជាអាចនៅអាចគ្រប់គ្រងបានល្អ​
-                                    </div>
-                                </div>
-                            </a>
-                        </figure>
-                    </div>
+                            ';
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -134,7 +140,7 @@
         <div class="container">
             <div class="row">
                 <?php
-                    display_new_by_category('entertainment');
+                display_new_by_category('entertainment');
                 ?>
             </div>
         </div>
