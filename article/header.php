@@ -70,14 +70,8 @@
                 <li><a href="contact.php">CONTACT</a></li>
             </ul>
             <div class="search">
-                <form action="search.php" method="get">
-                    <?php
-                        $query = '';
-                        if(isset($_GET['query'])) {
-                            $query = $_GET['query'];
-                        }
-                    ?>
-                    <input type="text" class="box" placeholder="Search Here" name="query" value="<?= $query ?>">
+                <form method="get">
+                    <input type="text" id="searchbar" class="box" placeholder="Search Here" name="query">
                     <button><i class="fas fa-search"></i></button>
                 </form>
             </div>    
