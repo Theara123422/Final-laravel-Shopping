@@ -55,3 +55,4 @@ function display_new_by_category($category)
         }
     }
 }
+

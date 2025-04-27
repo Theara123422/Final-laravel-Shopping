@@ -35,6 +35,7 @@ if ($related_new->rowCount() > 0) {
                         </div>
                         <div class="detail">
                             <h3 class="title">
+                                <input id="news-id" type="hidden" value="<?php echo $news_id ?>">
                                 <?php echo $row['title'] ?>
                             </h3>
                             <div class="date"><?php echo $row['created_at'] ?></div>
@@ -74,3 +75,24 @@ if ($related_new->rowCount() > 0) {
     </section>
 </main>
 <?php include('footer.php'); ?>
+<script>
+    $(document).ready(function(){
+        setTimeout(()=>{
+            let news_id = $('#news-id').val();
+            
+            $.ajax({
+                url : 'update_view_ajax.php',
+                method : 'POST',
+                data : {
+                    'id' : news_id
+                },
+                success : function(response){
+                    console.log(response);
+                },
+                error : function(){
+                    console.log('Error updating views');
+                }
+            })
+        },10000);
+    })
+</script>
